@@ -28,7 +28,13 @@ public class Recipe {
     private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Note note;
+    private Note notes;
+
+    @ManyToMany
+    @JoinTable(name = "recipe_category",
+    joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
     public Long getId() {
         return id;
@@ -118,11 +124,19 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
-    public Note getNote() {
-        return note;
+    public Note getNotes() {
+        return notes;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public void setNotes(Note notes) {
+        this.notes = notes;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

@@ -3,7 +3,7 @@ package com.springframework.springrecipeapp.model;
 import javax.persistence.*;
 
 @Entity
-public class Note {
+public class Notes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
